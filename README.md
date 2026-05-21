@@ -1,0 +1,130 @@
+# Implied vs Realized Volatility — Bitcoin & S&P 500
+
+Replication code for the master's thesis
+
+> **Does implied volatility efficiently predict future realized volatility, and how does this relationship vary across market regimes and between cryptocurrency and equity markets?**
+> Gabin Torres & Clément Massabo — MSc Financial Markets and Investments, SKEMA Business School, 2025
+
+[![Python 3.12](https://img.shields.io/badge/python-3.12+-blue.svg)](https://www.python.org/downloads/)
+[![uv](https://img.shields.io/badge/managed%20with-uv-blueviolet)](https://docs.astral.sh/uv/)
+[![License: MIT](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
+
+## What this repository does
+
+A fully reproducible Python pipeline that:
+
+1. Downloads daily price and volatility-index data for Bitcoin (Binance spot + Deribit DVOL) and the S&P 500 (Yahoo Finance for `^GSPC` and `^VIX`).
+2. Aligns the two markets on the NYSE calendar (2021-03-24 → 2025-12-31, 1,201 daily observations).
+3. Builds annualized realized volatility over rolling 7-, 14- and 30-day windows.
+4. Computes the variance risk premium (VRP) as the forward-aligned gap between implied and realized volatility.
+5. Classifies each day as *normal* or *stress* using ex-ante 90th-percentile thresholds on the VIX (for equities) and BTC realized volatility (for crypto).
+6. Estimates the predictive regression `RV_{t+h} = α + β · IV_t + ε` globally and by regime, with **Newey–West HAC** standard errors (`maxlags = h = 30`) to absorb the moving-average structure induced by overlapping rolling windows.
+7. Tests the joint efficiency hypothesis `H₀: α = 0, β = 1`.
+
+All five tables and figures reported in the thesis are produced by a single command.
+
+## Headline results
+
+| Specification | β | HAC s.e. | R² | N | H₀: β=1 |
+|---|---:|---:|---:|---:|:---:|
+| Global BTC | 0.545 | 0.085 | 0.33 | 1,171 | rejected (p < 0.001) |
+| Global SPX | 0.792 | 0.097 | 0.36 | 1,171 | rejected (p = 0.032) |
+| SPX — Normal | **0.973** | 0.204 | 0.27 | 955 | **not rejected (p = 0.89)** |
+| SPX — Stress | 0.324 | 0.098 | 0.05 | 120 | rejected (p < 0.001) |
+| BTC — Normal | 0.537 | 0.117 | 0.29 | 955 | rejected (p < 0.001) |
+| BTC — Stress | 0.442 | 0.302 | 0.19 | 117 | not rejected (p = 0.07) |
+
+> In normal periods the VIX is statistically indistinguishable from a fully efficient forecast of S&P 500 realized volatility — and that property disappears in stress. DVOL behaves like a noisier, structurally less efficient sibling of the VIX.
+
+## Data sources
+
+| Series | Provider | Identifier | Notes |
+|---|---|---|---|
+| Bitcoin spot (USDT) | Binance public REST API | `BTCUSDT` 1d candles | paginated download |
+| Bitcoin implied vol. | Deribit public REST API | `BTC_DVOL` | constant-maturity 30-day |
+| S&P 500 close | Yahoo Finance via `yfinance` | `^GSPC` | unadjusted price (no dividend adj.) |
+| VIX close | Yahoo Finance via `yfinance` | `^VIX` | quoted in % points |
+
+All endpoints are public; no proprietary terminal feed is required.
+
+## Pipeline architecture
+
+```
+src/
+├── downloaders/                 # raw OHLCV fetchers (one per source)
+│   ├── binance_btc.py
+│   ├── deribit_dvol.py
+│   └── yfinance_equity.py
+├── processing/                  # transforms raw CSVs into the analysis dataset
+│   ├── merge_datasets.py            # inner join on date → 1,201 obs
+│   ├── returns_and_rv.py            # log returns + rolling RV over 7/14/30d
+│   ├── vrp.py                       # VRP_t = IV_t − RV_{t+h}
+│   └── regimes.py                   # 90th-pct thresholds → stress indicators
+├── analysis/                    # empirical results
+│   ├── descriptive_stats.py
+│   ├── correlations.py
+│   ├── vrp_summary.py
+│   ├── regressions.py               # OLS with cov_type='HAC', maxlags=30
+│   ├── beta_tests.py                # joint efficiency test
+│   ├── generate_tables.py           # PNG renders for the thesis
+│   └── run_all_analysis.py          # orchestrator (runs everything in order)
+├── config.py                    # paths and constants
+└── main.py
+data/
+├── *.csv                        # downloaded raw series (regenerable)
+├── processed/                   # merged & enriched analysis dataset
+├── output/                      # regression results, descriptives, VRP, β-tests
+└── image/                       # publication-ready PNG tables
+```
+
+## Quick start
+
+```bash
+# 1. Clone and install
+git clone https://github.com/X9ClementX9/iv-rv-thesis.git
+cd iv-rv-thesis
+uv sync
+
+# 2. (Optional) re-download all raw data from public APIs
+uv run python -m src.downloaders.run_all_downloads
+
+# 3. Build the analysis dataset (returns, RV, VRP, regimes)
+uv run python -m src.processing.run_all_processing
+
+# 4. Run all empirical analyses and regenerate every table
+uv run python -m src.analysis.run_all_analysis
+```
+
+Outputs land in `data/processed/` (cleaned dataset) and `data/output/` (CSV tables) plus `data/image/` (PNG renders). A clean run from raw data to final tables takes about ten seconds on a modern laptop.
+
+## Requirements
+
+- Python ≥ 3.12
+- [`uv`](https://docs.astral.sh/uv/) for environment and dependency management
+- Internet access if re-downloading raw data; otherwise the bundled CSVs in `data/` are sufficient
+
+Dependencies are pinned in [`pyproject.toml`](pyproject.toml) and locked in [`uv.lock`](uv.lock).
+
+## Reproducibility notes
+
+- **Standard errors.** All reported `t`-statistics and `p`-values use Newey–West HAC standard errors with a Bartlett kernel and lag truncation `q = 30`, equal to the regression horizon. This absorbs the MA(29) autocorrelation mechanically induced by 30-day rolling realized volatility.
+- **Regime classification.** Thresholds are fixed at the full-sample 90th percentile and computed once, ex ante. They do not depend on the dependent variable of any regression.
+- **Calendar alignment.** Bitcoin is restricted to NYSE trading days via inner join on date. Weekend BTC moves are dropped from the daily return series; this introduces a small downward bias on BTC realized volatility, which works *against* finding a larger variance risk premium in crypto.
+- **Unit conventions.** DVOL and VIX are stored as decimals (divided by 100) before any computation so they are directly comparable to annualized RV.
+
+## License
+
+Released under the [MIT License](LICENSE).
+
+## Citation
+
+```bibtex
+@mastersthesis{torres_massabo_2025,
+  author  = {Torres, Gabin and Massabo, Cl{\'e}ment},
+  title   = {Does implied volatility efficiently predict future realized volatility,
+             and how does this relationship vary across market regimes and between
+             cryptocurrency and equity markets?},
+  school  = {SKEMA Business School, MSc Financial Markets and Investments},
+  year    = {2025}
+}
+```

@@ -1,0 +1,4 @@
+regime,mean_btc_vrp_30d,std_btc_vrp_30d,mean_spx_vrp_30d,std_spx_vrp_30d,n_obs
+All (Global),0.081,0.1153,0.035,0.0509,1201
+Normal,0.0868,0.1098,0.0323,0.0476,985
+Stress,0.055,0.1343,0.0468,0.0622,216

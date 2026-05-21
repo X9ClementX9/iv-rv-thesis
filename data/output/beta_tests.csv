@@ -1,0 +1,7 @@
+Model_Name,Beta,Std_Error_HAC,T_Stat_Beta_Eq_1,P_Value_Beta_Eq_1,Reject_H0_at_5pct
+1. Global BTC (RV30 future),0.5447,0.0851,-5.3503,0.0,True
+2. Global SPX (RV30 future),0.7921,0.0968,-2.1473,0.032,True
+3. BTC Regime Normal,0.5373,0.1167,-3.9658,0.0001,True
+4. BTC Regime Stress,0.4418,0.3017,-1.8506,0.0668,False
+5. SPX Regime Normal,0.9726,0.2045,-0.1341,0.8934,False
+6. SPX Regime Stress,0.3238,0.0984,-6.8753,0.0,True

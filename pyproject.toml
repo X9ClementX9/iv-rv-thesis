@@ -1,0 +1,26 @@
+[project]
+name = "btc-vol-thesis"
+version = "0.1.0"
+description = "Pipeline de récupération de données pour thèse Volatilité BTC vs Equity"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "pandas",
+    "yfinance",
+    "requests",
+    "tqdm",
+    "pyarrow",
+    "fastparquet",
+    "statsmodels",
+    "dataframe-image",
+    "Jinja2",
+    "matplotlib",
+]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+# --- LA CORRECTION EST ICI ---
+[tool.hatch.build.targets.wheel]
+packages = ["src"]
