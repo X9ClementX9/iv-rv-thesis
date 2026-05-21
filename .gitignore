@@ -1,4 +1,4 @@
-# Python
+# ===== Python =====
 __pycache__/
 *.py[cod]
 *$py.class
@@ -14,7 +14,23 @@ __pycache__/
 venv/
 env/
 
-# OS / editor
+# ===== LaTeX build artefacts =====
+*.aux
+*.bbl
+*.blg
+*.fdb_latexmk
+*.fls
+*.log
+*.out
+*.synctex.gz
+*.toc
+*.lot
+*.lof
+*.nav
+*.snm
+*.vrb
+
+# ===== OS / editor =====
 .DS_Store
 Thumbs.db
 .idea/
@@ -22,5 +38,11 @@ Thumbs.db
 *.swp
 *~
 
-# Jupyter
+# ===== Jupyter =====
 .ipynb_checkpoints/
+
+# ===== Local-only =====
+feedback.pdf
+*.docx
+media/image[2-9].png
+media/image1[0-6].png
