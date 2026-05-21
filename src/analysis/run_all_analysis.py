@@ -11,6 +11,7 @@ from src.analysis.correlations import generate_correlations
 from src.analysis.vrp_summary import generate_vrp_summary
 from src.analysis.regressions import execute_regressions
 from src.analysis.beta_tests import generate_beta_tests
+from src.analysis.figures import generate_figures
 
 def main():
     logging.basicConfig(level=logging.INFO, format='\n%(asctime)s - %(levelname)s - %(message)s')
@@ -24,6 +25,7 @@ def main():
         generate_vrp_summary()
         execute_regressions()
         generate_beta_tests()
+        generate_figures()
         
         logger.info("=== GENERATION STATISTIQUE TERMINEE AVEC SUCCES ===")
         logger.info("Tous les exports finaux de la thèse résident désomais dans le dossier 'data/output/'.")
