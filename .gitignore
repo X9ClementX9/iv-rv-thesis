@@ -44,5 +44,5 @@ Thumbs.db
 # ===== Local-only =====
 feedback.pdf
 *.docx
-media/image[2-9].png
-media/image1[0-6].png
+Thesis/media/image[2-9].png
+Thesis/media/image1[0-6].png

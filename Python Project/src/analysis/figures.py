@@ -24,8 +24,8 @@ MEDIA_DIR = PROCESSED_DIR.parent / "image"
 MEDIA_DIR.mkdir(parents=True, exist_ok=True)
 
 # Sortie optionnelle : dossier media/ de la thèse LaTeX si on travaille en local
-# avec le repo cloné dans "Thesis 2/Python Project/"
-_THESIS_MEDIA = Path(__file__).resolve().parents[3] / "media"
+# avec le repo cloné. Cible : "<repo>/Thesis/media/".
+_THESIS_MEDIA = Path(__file__).resolve().parents[3] / "Thesis" / "media"
 THESIS_MEDIA = _THESIS_MEDIA if _THESIS_MEDIA.exists() else None
 
 
