@@ -46,7 +46,7 @@
 % No navigation symbols, clean footline
 \setbeamertemplate{navigation symbols}{}
 \setbeamertemplate{footline}{%
-  \hfill\textcolor{midgrey}{\tiny G.~Torres \& C.~Massabo --- MSc FMI --- May 2025 \quad
+  \hfill\textcolor{midgrey}{\tiny G.~Torres \& C.~Massabo \,$\cdot$\, MSc FMI \,$\cdot$\, May 2025 \quad
   \insertframenumber/\inserttotalframenumber}\hspace*{4mm}\vspace*{3mm}}
 
 % Custom frame title with a navy rule beneath
@@ -101,7 +101,7 @@
     {\small\itshape Thesis Supervisor: Alexandre Landi\par}
     \vspace*{10mm}
     {\small MSc Financial Markets \& Investments\par}
-    {\small SKEMA Business School \,---\, May 2025\par}
+    {\small SKEMA Business School, May 2025\par}
   \end{center}
 \end{frame}
 
@@ -165,7 +165,7 @@
   \vspace*{3mm}
   \begin{itemize}
     \setlength\itemsep{3mm}
-    \item \textbf{H1.}~Implied volatility overestimates future realized volatility on average \,---\, positive variance risk premium.
+    \item \textbf{H1.}~Implied volatility overestimates future realized volatility on average: positive variance risk premium.
     \item \textbf{H2.}~Implied volatility is informative but not a perfect predictor.
     \item \textbf{H3.}~The variance risk premium is larger in crypto than in equities.
     \item \textbf{H4.}~The predictive relationship weakens in stress periods.
@@ -195,7 +195,7 @@
   \begin{itemize}
     \item \textbf{Period:} 24 March 2021 \,$\to$\, 31 December 2025.
     \item \textbf{After NYSE-calendar inner join:} 1\,201 daily observations.
-    \item All series come from public APIs \,---\, no proprietary terminal data.
+    \item All series come from public APIs (no proprietary terminal data).
   \end{itemize}
 \end{frame}
 
@@ -216,18 +216,33 @@
 \end{frame}
 
 % =====================================================================
-% SLIDE 7 - FIRST LOOK (TRANSITION)
+% SLIDE 7a - FIRST LOOK: BITCOIN (TRANSITION)
 % =====================================================================
-\begin{frame}{A first look at the data}
-  \vspace*{2mm}
+\begin{frame}{A first look: Bitcoin}
+  \vspace*{3mm}
   \begin{center}
-    \includegraphics[width=0.86\textwidth]{../media/fig_iv_rv_timeline.pdf}
+    \includegraphics[width=0.88\textwidth]{../media/fig_iv_rv_timeline_btc.pdf}
   \end{center}
-  \vspace*{1mm}
+  \vspace*{3mm}
+  \begin{itemize}
+    \item DVOL and 30-day realized volatility move together, with a positive average wedge.
+    \item Red shading: stress days (BTC 30-day RV above its 90th percentile, set ex~ante).
+  \end{itemize}
+\end{frame}
+
+% =====================================================================
+% SLIDE 7b - FIRST LOOK: S&P 500
+% =====================================================================
+\begin{frame}{A first look: S\&P~500}
+  \vspace*{3mm}
   \begin{center}
-    {\footnotesize\itshape Red shading marks stress days
-      (90th-percentile thresholds set ex~ante).}
+    \includegraphics[width=0.88\textwidth]{../media/fig_iv_rv_timeline_spx.pdf}
   \end{center}
+  \vspace*{3mm}
+  \begin{itemize}
+    \item Volatility runs in a much narrower band than Bitcoin, but spikes sharply in crises.
+    \item Red shading: stress days (VIX above its 90th percentile, set ex~ante).
+  \end{itemize}
 \end{frame}
 
 % =====================================================================
@@ -252,8 +267,8 @@
   \end{center}
   \vspace*{5mm}
   \begin{itemize}
-    \item Both slopes are highly significant \,---\, implied volatility carries real information.
-    \item Both are significantly below one \,---\, positive variance risk premium in both markets.
+    \item Both slopes are highly significant: implied volatility carries real information.
+    \item Both are significantly below one: positive variance risk premium in both markets.
   \end{itemize}
   \vspace*{2mm}
   {\footnotesize\itshape $^{***}$ significant at 1\,\%. Standard errors: Newey--West HAC, 30 lags.}
@@ -285,20 +300,20 @@
 % SLIDE 10 - HEADLINE: SPX NORMAL CLOSE TO EFFICIENT
 % =====================================================================
 \begin{frame}{Headline result}
-  \vspace*{6mm}
+  \vspace*{3mm}
   \begin{center}
     {\small\itshape In calm markets, the VIX looks almost efficient.}
-    \vspace*{6mm}
-
-    {\fontsize{72}{80}\selectfont\color{navy}\textbf{$\hat\beta = 0.97$}}
-
-    \vspace*{4mm}
-    {\large S\&P~500 \,---\, normal regime \,---\, $N = 955$}
-
-    \vspace*{10mm}
-    {\large $p = 0.89$\, for\, $H_0:\beta = 1$}
-    \vspace*{8mm}
   \end{center}
+  \vspace*{4mm}
+  \begin{center}
+    {\fontsize{44}{52}\selectfont\color{navy}\textbf{$\hat\beta = 0.97$}}\\[2mm]
+    {\normalsize S\&P~500, normal regime, $N = 955$}
+  \end{center}
+  \vspace*{6mm}
+  \begin{center}
+    {\large $p = 0.89$\, for\, $H_0:\beta = 1$}
+  \end{center}
+  \vspace*{6mm}
   \begin{center}
     \textcolor{navy}{\bfseries We cannot reject that the VIX is a fully efficient predictor\\
     of S\&P~500 realized volatility in normal periods.}
@@ -340,8 +355,8 @@
   \vspace*{3mm}
   \begin{enumerate}
     \setlength\itemsep{4mm}
-    \item \textbf{Hedging demand.} Equity investors buy out-of-the-money puts in stress \,---\, pushes the VIX above expected realized volatility.
-    \item \textbf{24/7 trading.} Bitcoin realized volatility adjusts to news within hours, not days \,---\, compresses the wedge faster.
+    \item \textbf{Hedging demand.} Equity investors buy out-of-the-money puts in stress, which pushes the VIX above expected realized volatility.
+    \item \textbf{24/7 trading.} Bitcoin realized volatility adjusts to news within hours, not days, which compresses the wedge faster.
     \item \textbf{Market maturity.} Equity option markets are deep and dominated by institutions; crypto options are concentrated on a few venues and a more retail base.
   \end{enumerate}
 \end{frame}
@@ -354,7 +369,7 @@
   \begin{itemize}
     \setlength\itemsep{3.5mm}
     \item \textbf{Short sample.} DVOL only goes back to March 2021.
-    \item \textbf{Aggregated indices.} No full option surface \,---\, no skew, no term structure.
+    \item \textbf{Aggregated indices.} No full option surface, so no skew and no term structure.
     \item \textbf{Daily frequency.} Intraday data would refine realized volatility.
     \item \textbf{Asymmetric regime definition.} VIX for equity stress vs.\ realized volatility for crypto stress.
   \end{itemize}
@@ -367,9 +382,9 @@
   \vspace*{3mm}
   \begin{enumerate}
     \setlength\itemsep{4mm}
-    \item Implied volatility is a \textbf{risk-adjusted expectation}, not a raw forecast \,---\, in both markets.
+    \item Implied volatility is a \textbf{risk-adjusted expectation}, not a raw forecast, in both markets.
     \item Equity markets are \textbf{close to efficient in normal periods}; crypto markets are \textbf{not}.
-    \item The variance risk premium \textbf{widens in equity stress} and \textbf{compresses in crypto stress} \,---\, a feature only visible cross-market.
+    \item The variance risk premium \textbf{widens in equity stress} and \textbf{compresses in crypto stress}. This asymmetry is only visible across markets.
   \end{enumerate}
   \vspace*{8mm}
   \begin{center}
@@ -382,22 +397,17 @@
 % SLIDE 15 - THANK YOU
 % =====================================================================
 \begin{frame}[plain]
-  \vspace*{18mm}
-  \begin{center}
-    {\fontsize{40}{48}\selectfont\sffamily\bfseries\color{navy}Thank you.}\\[4mm]
-    {\Large\itshape Questions?}
-  \end{center}
   \vspace*{10mm}
   \begin{center}
-    \begin{tabular}{c@{\hspace{14mm}}c}
-      \includegraphics[width=28mm]{../media/qr_repo.png} &
-      \begin{minipage}[c]{0.45\textwidth}\small
-        \textbf{Replication materials} \\[2pt]
-        \href{https://github.com/X9ClementX9/iv-rv-thesis}{\texttt{github.com/X9ClementX9/}}\\
-        \href{https://github.com/X9ClementX9/iv-rv-thesis}{\texttt{iv-rv-thesis}}\\[3pt]
-        {\footnotesize\itshape Thesis, source code, dataset and HAC estimation routines.}
-      \end{minipage}
-    \end{tabular}
+    {\fontsize{34}{40}\selectfont\sffamily\bfseries\color{navy}Thank you.}\\[3mm]
+    {\large\itshape Questions?}
+  \end{center}
+  \vspace*{14mm}
+  \begin{center}
+    \includegraphics[width=24mm]{../media/qr_repo.png}\\[3mm]
+    {\small\bfseries Replication materials}\\[1mm]
+    {\small\href{https://github.com/X9ClementX9/iv-rv-thesis}{\texttt{github.com/X9ClementX9/iv-rv-thesis}}}\\[2mm]
+    {\footnotesize\itshape Thesis, source code, dataset and HAC estimation routines.}
   \end{center}
 \end{frame}
 

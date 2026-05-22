@@ -106,6 +106,28 @@ def generate_figures():
     plt.close(fig)
     logger.info(f"Figure 1 -> {out1}")
 
+    # --- Variantes 1-panel pour les slides de soutenance ---
+    for market, iv_col, rv_col, stress_col, iv_label, title in [
+        ("btc", "btc_iv", "btc_rv_30d", "btc_stress", "DVOL (implied)", "Bitcoin"),
+        ("spx", "spx_iv", "spx_rv_30d", "spx_stress", "VIX (implied)", "S\\&P 500"),
+    ]:
+        fig, ax = plt.subplots(figsize=(7.5, 3.4))
+        _shade_stress(ax, df["date"], df[stress_col] == 1, color="#cc4444")
+        ax.plot(df["date"], df[iv_col], color="#1f4e79", lw=1.3, label=iv_label)
+        ax.plot(df["date"], df[rv_col], color="#c84b16", lw=1.3, label="RV$^{(30)}$ (realized)")
+        ax.set_ylabel("Volatility (annualised)")
+        ax.set_title(title)
+        ax.legend(loc="upper right", frameon=False)
+        ax.xaxis.set_major_locator(mdates.YearLocator())
+        ax.xaxis.set_major_formatter(mdates.DateFormatter("%Y"))
+        fig.tight_layout()
+        out_single = MEDIA_DIR / f"fig_iv_rv_timeline_{market}.pdf"
+        fig.savefig(out_single, bbox_inches="tight")
+        if THESIS_MEDIA:
+            fig.savefig(THESIS_MEDIA / f"fig_iv_rv_timeline_{market}.pdf", bbox_inches="tight")
+        plt.close(fig)
+        logger.info(f"Figure 1{market} -> {out_single}")
+
     # ============================================================
     # Figure 2 : scatter IV_t vs RV_{t+30} avec 45° et OLS line
     # ============================================================
