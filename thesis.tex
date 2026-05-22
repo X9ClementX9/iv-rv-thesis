@@ -668,14 +668,13 @@ realized volatility. Second, it is generally not an unbiased forecast,
 because it embeds a volatility risk premium. Third, the strength of the
 relationship may vary across market regimes.
 
-\textit{For this thesis.} These three findings define the equity
-benchmark against which Bitcoin will be evaluated. They motivate the
-use of the standard predictive regression
-$RV_{t+h}=\alpha+\beta IV_t+\varepsilon$ (Chapter~\ref{data-and-methods})
-and frame the joint efficiency test $H_0:\alpha=0,\beta=1$. If crypto
-volatility markets are less mature, we expect a lower slope, a larger
-intercept, and a sharper regime-dependence than in the S\&P~500
-benchmark.
+These three findings provide the equity benchmark against which we
+evaluate Bitcoin in this thesis. They motivate the use of the standard
+predictive regression $RV_{t+h}=\alpha+\beta IV_t+\varepsilon$ and the
+joint efficiency test $H_0:\alpha=0,\beta=1$, both presented in
+Chapter~\ref{data-and-methods}. If crypto volatility markets are less
+mature, we expect a lower slope, a larger intercept, and a stronger
+regime dependence than for the S\&P 500.
 
 \section{Informational Efficiency of Implied Volatility and Empirical
 Regularities}\label{informational-efficiency-of-implied-volatility-and-empirical-regularities}
@@ -747,13 +746,13 @@ Overall, the literature suggests a balanced conclusion. Implied
 volatility is clearly informative but not fully efficient in the strict
 statistical sense, and its predictive relationship can vary over time.
 
-\textit{For this thesis.} This balanced view directly shapes our
-hypotheses H1 and H2: we expect significant predictive content (slope
-$\beta$ different from zero) \emph{and} significant bias (slope
-$\beta\neq 1$, positive intercept) in both markets. The dependence on
-asset class and methodology highlighted by \fcitet{poon2003} also
-justifies running the same predictive regression separately on Bitcoin
-and the S\&P~500 rather than pooling them.
+This balanced view shapes our hypotheses H1 and H2. We expect implied
+volatility to have significant predictive power (slope $\beta$
+different from zero), but also to be biased (slope $\beta$ different
+from one, positive intercept). The fact that forecasting performance
+depends on the asset class also justifies estimating the predictive
+regression separately on Bitcoin and on the S\&P 500, rather than
+pooling them.
 
 \section{The Variance Risk Premium and Its Economic
 Interpretation}\label{the-variance-risk-premium-and-its-economic-interpretation}
@@ -808,13 +807,13 @@ and realized volatility. As a result, the behavior of the variance risk
 premium provides important information about changing market conditions
 and investor sentiment.
 
-\textit{For this thesis.} The literature gives us two concrete
-priors. First, the average VRP should be positive in both markets, and
-larger where risk aversion or hedging demand is structurally higher
---- which is our motivation for H3 (larger VRP in crypto). Second, the
-\emph{time variation} of the VRP, not only its level, carries economic
-content; this is what motivates the regime-split analysis of VRP in
-Table~\ref{tab:vrp} rather than a pooled estimate alone.
+This literature provides two priors for our analysis. First, the
+average VRP should be positive in both markets, and larger in markets
+where risk aversion or hedging demand is structurally higher. This is
+our motivation for H3 (larger VRP in crypto). Second, the time
+variation of the VRP, and not only its level, carries economic
+content. This motivates the regime-based analysis of the VRP in
+Table~\ref{tab:vrp} rather than a single pooled estimate.
 
 \section{The Role of Market Stress and Financial Crises in Volatility
 Dynamics}\label{the-role-of-market-stress-and-financial-crises-in-volatility-dynamics}
@@ -882,14 +881,14 @@ Overall, the literature shows that periods of stress provide a critical
 environment for testing the robustness of the relationship between
 implied and realized volatility.
 
-\textit{For this thesis.} The empirical evidence that the IV--RV link
-weakens in crises is precisely what H4 and H5 attempt to quantify in
-the 2021--2025 sample, which includes several stress windows (the May
-2022 crypto deleveraging, the March 2023 banking turmoil, mid-2024 yen
-carry-trade unwind). We do not assume regime-dependence; we test for
-it explicitly by splitting the sample on 90th-percentile thresholds
-(Section~\ref{definition-of-market-regimes}) and re-estimating the
-predictive regression within each regime.
+The evidence that the IV--RV relationship weakens in crises is what
+H4 and H5 try to quantify in our 2021--2025 sample. This sample
+includes several stress periods, such as the May 2022 crypto
+deleveraging, the March 2023 banking turmoil, and the mid-2024 yen
+carry-trade unwind. We do not assume regime dependence: we test for it
+by splitting the sample with 90th-percentile thresholds
+(Section~\ref{definition-of-market-regimes}) and by re-estimating the
+predictive regression in each regime.
 
 \section{Existing Literature on Cryptocurrency Markets and Their
 Specific
@@ -950,34 +949,30 @@ several distinctive features. They are more volatile, trade
 continuously, have a less mature market structure, and are more
 sensitive to liquidity and sentiment shocks.
 
-\textit{For this thesis: from structural features to directional
-predictions.} Rather than restating that ``crypto is more volatile,''
-we connect each structural feature to a specific cross-market
-difference we expect to observe in the empirical chapters.
+These features lead to specific predictions for the cross-market
+comparison. A retail-heavy investor base and continuous trading should
+increase the demand for hedging and speculative positions on options.
+This is expected to raise DVOL above the level justified by future
+realized volatility, and therefore to produce a larger variance risk
+premium in crypto than in equities. This is the basis of H3.
 
-\begin{itemize}
-\item \emph{Retail-heavy investor base and continuous trading} should
-push DVOL above the level justified by physical variance through
-strong demand for hedging and speculative gamma, producing a
-\emph{larger} average variance risk premium in crypto than in equities
-(H3).
-\item \emph{Concentrated venue structure} (Deribit dominance) and
-thinner liquidity at the wings of the option surface should add noise
-to the implied volatility signal, producing a \emph{lower predictive
-slope} $\hat{\beta}$ for Bitcoin than for the S\&P~500 (H2 in its
-cross-market form).
-\item \emph{Faster realized-volatility adjustment to sentiment shocks}
-in 24/7 markets should generate the unusual outcome that the crypto
-VRP \emph{compresses} in stress (RV catches up faster than IV),
-whereas the equity VRP \emph{widens} in stress (IV is pushed up by
-hedging demand before RV materialises). This asymmetric prediction is
-specific to our comparative design and is tested directly in
+A more concentrated trading venue (mainly Deribit) and thinner
+liquidity for some options should add noise to the implied volatility
+measure. As a result, we expect a lower predictive slope for Bitcoin
+than for the S\&P 500, in line with H2.
+
+Cryptocurrency markets also trade 24/7, so realized volatility may
+react faster to news than implied volatility. This can lead to a
+compression of the variance risk premium during stress in crypto. In
+equities, the opposite is expected: implied volatility tends to react
+first, which widens the premium. This contrast is one of the main
+empirical predictions we test in
 Section~\ref{variance-risk-premium-analysis}.
-\item \emph{Less mature regulatory and informational environment}
-should make the predictive relationship more fragile in crypto across
-both regimes, motivating H4 and the lower-precision crypto-stress
-slope we expect in Table~\ref{tab:reg_regime}.
-\end{itemize}
+
+Finally, a less mature regulatory and informational environment
+suggests that the predictive relationship will be less stable in
+crypto than in equities. This justifies H4 and motivates the
+regime-conditional regressions in Table~\ref{tab:reg_regime}.
 
 \section{Limited Empirical Evidence on Crypto Options and the IV--RV
 Relationship}\label{limited-empirical-evidence-on-crypto-options-and-the-ivrv-relationship}
@@ -1024,14 +1019,13 @@ measure of implied volatility. While they do not capture the full
 richness of the option surface, they allow for a tractable and
 comparable analysis across asset classes.
 
-\textit{For this thesis.} The gap is exactly what we close. By
-applying the standard equity-market predictive regression to Bitcoin
-using DVOL as the implied-volatility input, we provide one of the few
-direct, regime-conditional estimates of the IV--RV relationship in
-crypto on a multi-year sample. The use of aggregated indices is a
-deliberate trade-off: it sacrifices the richness of the volatility
-surface in exchange for clean comparability with the VIX-based equity
-literature.
+This is the gap we aim to fill. By applying the standard equity
+predictive regression to Bitcoin with DVOL as the implied volatility
+input, we provide direct estimates of the IV--RV relationship in
+crypto, both globally and by regime, over a multi-year sample. The
+use of aggregated indices is a deliberate choice: we lose some
+information on the volatility surface, but we gain a clean comparison
+with the VIX-based equity literature.
 
 \section{Positioning of the Thesis
 Contribution}\label{positioning-of-the-thesis-contribution}
@@ -1204,9 +1198,9 @@ cryptocurrency and equity markets. It allows for a direct empirical
 assessment of the relationship between implied and realized volatility
 within a unified setting.
 
-\textbf{Replication materials.} The full data pipeline ---raw
+\textbf{Replication materials.} The full data pipeline (raw
 downloaders, transformation scripts, regime classification, and
-regression routines--- is openly available at
+regression routines) is openly available at
 \url{https://github.com/X9ClementX9/iv-rv-thesis}\footnote{Repository
 to be made public on submission. If the URL above is not yet accessible,
 please contact the authors.}. The repository contains a \texttt{README}
@@ -1366,16 +1360,14 @@ forecast. Together, these results suggest that implied volatility is
 informative but not fully efficient.
 
 \textbf{Inference.} The dependent variable $RV^{(h)}_{t+h}$ is built
-from a rolling window of $h$ daily returns, so two consecutive
-observations of the regressand share $h-1$ underlying returns. This
-mechanically generates a moving-average structure of order $h-1$ in the
-residuals and renders ordinary OLS standard errors inconsistent. To
-account for this overlap and for residual heteroskedasticity, we report
-\fcitet{newey1987}-type HAC standard errors throughout, with a Bartlett
-kernel and a lag truncation equal to the horizon ($q = h = 30$ for the
-benchmark specification). All $t$-statistics and confidence intervals
-reported in Chapter~\ref{empirical-results} use these HAC standard
-errors.
+from a rolling window of $h$ daily returns. Two consecutive
+observations therefore share $h-1$ underlying returns. This creates a
+moving-average structure in the residuals, which makes ordinary OLS
+standard errors unreliable. To correct for this, we use HAC standard
+errors following \fcitet{newey1987}, with a Bartlett kernel and a lag
+truncation equal to the horizon ($q = h = 30$ for the main
+specification). All $t$-statistics and $p$-values reported in
+Chapter~\ref{empirical-results} use these HAC standard errors.
 
 The hypothesis that the slope coefficient is equal to one is then tested
 using the standard $t$-statistic:
@@ -1434,16 +1426,16 @@ market is in stress, using a logical OR:
 \label{eq:stress_global}
 \end{equation}
 
-\textbf{Why an asymmetric design.} The two markets are not flagged with
-the same input variable, and this choice is deliberate. For equities,
-the VIX is the natural option-implied stress proxy; using realized
-volatility instead would mechanically embed the dependent variable of
-our predictive regression into the regime classifier. For Bitcoin, no
-equivalent option-based index covers the full sample reliably, so
-realized volatility is the only robust option. We acknowledge the
-asymmetry as a limitation in Section~\ref{limitations-of-the-study};
-robustness to using DVOL for the crypto regime when it is available
-yields qualitatively similar results.
+\textbf{Why an asymmetric design.} The two markets are not classified
+using the same variable, and this choice is intentional. For equities,
+the VIX is the natural option-implied measure of stress. Using
+realized volatility instead would mix the dependent variable of the
+predictive regression with the regime classifier. For Bitcoin, no
+option-based index has enough history to cover the full sample, so
+realized volatility is the only available option. We discuss this
+asymmetry as a limitation in
+Section~\ref{limitations-of-the-study}. Using DVOL for the crypto
+regime when it is available gives similar results.
 
 The use of indicator variables provides a simple and transparent way to
 incorporate regime dependence into the empirical framework. It allows
@@ -1493,13 +1485,14 @@ cryptocurrency and equity markets.
 \label{fig:iv_rv_timeline}
 \end{figure}
 
-Figure~\ref{fig:iv_rv_timeline} makes the level gap visible: Bitcoin
-volatility lives in a range roughly four times that of the S\&P~500,
-and the wedge between implied and realised volatility is on average
-positive in both markets but visibly compresses around the BTC stress
-shading (May 2022 and early 2024) while \emph{widening} around the
-SPX stress shading (notably March 2023). Tables~\ref{tab:desc}
-and~\ref{tab:vrp} put numbers on these visual patterns.
+Figure~\ref{fig:iv_rv_timeline} shows the difference in volatility
+levels between the two markets. Bitcoin volatility moves in a range
+about four times wider than the S\&P 500. The gap between implied and
+realized volatility is positive on average in both markets. It also
+narrows around the BTC stress periods (May 2022 and early 2024) and
+widens around the SPX stress periods (in particular March 2023).
+Tables~\ref{tab:desc} and~\ref{tab:vrp} report the numbers behind
+these patterns.
 
 
 \begin{table}[H]
@@ -1559,21 +1552,20 @@ volatility.
 The shapes of the volatility distributions also differ across markets.
 Volatility is bounded below by zero and cannot move symmetrically: the
 relevant question for skewness is whether the upper tail (volatility
-spikes) is longer than what a symmetric benchmark would imply. Both
-$RV^{(30)}$ and $IV$ are positively skewed in both markets ---
-$+0.78$ and $+0.73$ for Bitcoin, $+1.60$ and $+1.34$ for the S\&P 500
---- meaning that very high volatility episodes occur more often than a
-symmetric distribution would suggest. The asymmetry is markedly stronger
-in equities, where occasional VIX spikes during stress weeks dominate
-otherwise calm periods.
+spikes) is longer than what a symmetric benchmark would imply. Both $RV^{(30)}$ and $IV$ are positively skewed in both markets
+($+0.78$ and $+0.73$ for Bitcoin, $+1.60$ and $+1.34$ for the S\&P
+500). This means that very high volatility episodes occur more often
+than a symmetric distribution would suggest. The asymmetry is stronger
+in equities, where occasional VIX spikes during stress periods stand
+out from otherwise calm periods.
 
-Excess kurtosis tells a related story: the S\&P 500 volatility series
-display fat tails ($+2.69$ for $RV^{(30)}$, $+2.64$ for $VIX$),
-indicating that extreme high-volatility observations occur more
-frequently than under a normal distribution. Bitcoin volatility is much
-closer to mesokurtic ($+0.54$ and $+0.02$) because high-volatility
-periods are the norm rather than the exception in crypto: there is less
-of a separation between calm and crisis regimes than in equities.
+Excess kurtosis goes in the same direction. The S\&P 500 volatility
+series have fat tails ($+2.69$ for $RV^{(30)}$, $+2.64$ for the VIX).
+Extreme high-volatility observations are therefore more frequent than
+under a normal distribution. Bitcoin volatility is much closer to
+mesokurtic ($+0.54$ and $+0.02$). The reason is that high volatility
+is the norm rather than the exception in crypto, so the separation
+between calm and stress periods is less sharp.
 
 The variance risk premium shows different distributional properties
 across markets. The S\&P 500 premium is negatively skewed ($-1.33$) and
@@ -1693,11 +1685,11 @@ unbiased and efficient predictor.
 \label{fig:iv_rv_scatter}
 \end{figure}
 
-Figure~\ref{fig:iv_rv_scatter} visualises the key empirical claim of
-the thesis: in both markets the OLS slope is significantly flatter
-than the 45$^\circ$ line, but the gap is much wider for Bitcoin than
-for the S\&P~500. Table~\ref{tab:reg_global} formalises this
-graphical impression.
+Figure~\ref{fig:iv_rv_scatter} illustrates the main result of the
+predictive regression. In both markets, the OLS slope is clearly
+flatter than the 45$^\circ$ line. The gap is much wider for Bitcoin
+than for the S\&P 500. Table~\ref{tab:reg_global} reports the
+corresponding coefficients.
 
 
 \begin{table}[H]
@@ -1974,11 +1966,11 @@ implied volatility as a forecasting tool.
 \section{Comparison Between Cryptocurrency and Equity
 Markets}\label{comparison-between-cryptocurrency-and-equity-markets}
 
-Table~\ref{tab:summary_xmarket} consolidates the cross-market
-comparison on four headline dimensions. The structural interpretation
-of these differences --- market maturity, microstructure, investor
-base, and 24/7 trading --- is developed in Chapter~\ref{discussion} and
-not repeated here.
+Table~\ref{tab:summary_xmarket} summarises the comparison between
+the two markets on the main dimensions of the analysis. The structural
+interpretation of these differences (market maturity, microstructure,
+investor base, and 24/7 trading) is discussed in
+Chapter~\ref{discussion}.
 
 \begin{table}[H]
 \centering
@@ -1998,41 +1990,46 @@ Stress VRP dynamics & compresses & widens & opposite signs \\
 \end{tabular}
 \end{table}
 
-Two points are worth highlighting. First, the cross-market gap in the
-slope coefficient is not merely a level shift: in normal periods the
-S\&P~500 is statistically indistinguishable from full efficiency
-($p=0.89$ for $\beta=1$) while Bitcoin is not, even though the absolute
-gap between their slopes is moderate ($0.97$ vs $0.54$). Second, the
-asymmetric variance-risk-premium response to stress (widening in
-equities, compressing in crypto) is the most distinctive empirical
-feature of this comparison and is not visible in either market when
-studied in isolation.
+Two results stand out from this comparison. First, the gap between
+the slopes does not only reflect a difference in level. In normal
+periods, the S\&P 500 is statistically close to full efficiency
+($p=0.89$ for $\beta=1$), while Bitcoin remains clearly below one,
+even though the difference in absolute values is moderate ($0.97$ vs
+$0.54$). Second, the variance risk premium reacts in opposite
+directions to stress in the two markets. This pattern only appears
+when both markets are studied together.
 
 \chapter{Discussion}\label{discussion}
 
 \section{Overall Interpretation of the
 Results}\label{overall-interpretation-of-the-results}
 
-Three findings from Chapter~\ref{empirical-results} structure the
-interpretation. First, implied volatility carries substantial
-forward-looking information in both markets: the slopes in
-Table~\ref{tab:reg_global} are highly significant and the $R^2$ exceeds
-$0.32$ in each case, validating DVOL and the VIX as forecast inputs.
-Second, neither slope is consistent with full efficiency: both lie below
-one, which is the textbook signature of a positive variance risk
-premium. Implied volatility is best read as a risk-adjusted expectation
-rather than a pure point forecast of future variance. Third, the
-relationship is regime-dependent in qualitatively different ways across
-markets. In equities the S\&P~500 normal-period slope is statistically
-indistinguishable from one ($p=0.89$ for $\beta=1$) and collapses to
-$0.32$ in stress with an $R^2$ of only $0.05$; in crypto the slope is
-already below one in normal periods and degrades less sharply, but the
-crypto-stress regression is too short ($N=117$) to make a precise
-statistical claim. The variance risk premium dynamics mirror this
-asymmetry, widening in equity stress and compressing in crypto stress.
-These three patterns are the core empirical contribution of the thesis;
-the rest of this chapter explores their economic interpretation rather
-than restating their magnitudes.
+The empirical results point to three main findings.
+
+First, implied volatility contains useful forward-looking information
+in both markets. The slopes in Table~\ref{tab:reg_global} are highly
+significant and the $R^2$ exceeds 0.32 in each case. This confirms
+that DVOL and the VIX are valuable forecast inputs.
+
+Second, neither slope is consistent with full efficiency. Both are
+below one, and the variance risk premium is positive on average. This
+is the standard pattern associated with a positive premium for
+volatility risk. Implied volatility is therefore better interpreted as
+a risk-adjusted expectation than as a pure forecast.
+
+Third, the relationship depends on the market regime, but in a
+different way for each market. For the S\&P 500, the slope is close
+to one in normal periods ($p=0.89$ for $\beta=1$) and collapses to
+$0.32$ in stress, with the $R^2$ falling to $0.05$. For Bitcoin, the
+slope is already below one in normal periods, and the drop in stress
+is smaller. The crypto-stress sample is also too short ($N=117$) to
+identify a significant change with confidence.
+
+The behaviour of the variance risk premium reflects the same
+asymmetry. It widens in equity stress and compresses in crypto stress.
+These three patterns are the main empirical contribution of the
+thesis. The rest of this chapter discusses the economic mechanisms
+behind them.
 
 \section{Economic Mechanisms: Hedging Demand, Investor Behavior, and
 Market
@@ -2293,35 +2290,34 @@ different environments.
 \section{Answer to the Research
 Question}\label{answer-to-the-research-question}
 
-This thesis asked whether implied volatility efficiently predicts future
-realized volatility, and how this relationship varies across market
-regimes and between cryptocurrency and equity markets. The evidence in
-Chapter~\ref{empirical-results} produces three concrete answers.
+This thesis asked whether implied volatility efficiently predicts
+future realized volatility, and how this relationship varies across
+market regimes and between cryptocurrency and equity markets. The
+empirical results give three answers.
 
-\textit{Informative but biased.} In both Bitcoin and the S\&P~500,
-implied volatility is a strongly significant predictor of subsequent
-realized volatility, with $R^2$ above $0.32$ in the full-sample
-regressions (Table~\ref{tab:reg_global}). In both markets the slope is
-significantly below one and the variance risk premium is positive on
-average ($+0.08$ for Bitcoin, $+0.04$ for the S\&P 500). Implied
-volatility is best read as a risk-adjusted expectation, not a pure
+First, implied volatility is informative but biased. In both Bitcoin
+and the S\&P 500, the slope of the predictive regression is highly
+significant, with $R^2$ above 0.32. The slope is also significantly
+below one, and the variance risk premium is positive on average
+($+0.08$ for Bitcoin, $+0.04$ for the S\&P 500). Implied volatility
+should therefore be read as a risk-adjusted expectation, not as a pure
 forecast.
 
-\textit{Equities are nearly efficient in calm periods.} The S\&P 500
-normal-regime slope is $\hat{\beta}=0.97$ with HAC s.e.\ $0.20$, and the
-test $\beta=1$ yields $p=0.89$: the VIX is statistically
-indistinguishable from full efficiency when markets are calm. In stress,
-the slope collapses to $0.32$ and $R^2$ falls to $0.05$. The same
-exercise on Bitcoin shows persistent deviation from efficiency even in
-calm periods ($\hat{\beta}=0.54$), and the crypto-stress sample is too
-short ($N=117$) to detect a statistically significant change.
+Second, equity markets are close to efficiency in normal times. The
+S\&P 500 normal-regime slope is $0.97$ with an HAC standard error of
+$0.20$, and the test $\beta=1$ gives $p=0.89$. In other words, we
+cannot reject that the VIX is a fully efficient predictor when markets
+are calm. In stress, the slope falls to $0.32$ and $R^2$ drops to
+$0.05$. Bitcoin is different: the slope stays below one even in calm
+periods ($0.54$), and the crypto-stress sample is too short ($N=117$)
+to identify a significant change.
 
-\textit{Variance risk premium dynamics are asymmetric.} The VRP
-\emph{widens} in equity stress (the VIX over-reacts to hedging demand)
-and \emph{compresses} in crypto stress (realized volatility adjusts
-upward faster than DVOL). This asymmetry is the most original empirical
-contribution of the thesis and is consistent with the market-structure
-arguments in Chapter~\ref{discussion}.
+Third, the variance risk premium reacts differently to stress across
+the two markets. It widens for the S\&P 500 (the VIX rises faster than
+realized volatility) and compresses for Bitcoin (realized volatility
+catches up faster than DVOL). This contrast is one of the main
+empirical contributions of the thesis. It is consistent with the
+market structure arguments developed in Chapter~\ref{discussion}.
 
 \section{So What for Practice}\label{implications-for-practitioners}
 
@@ -2391,17 +2387,16 @@ between empirical findings and asset pricing theory.
 
 \section{Closing}\label{closing}
 
-The single takeaway from this thesis is that DVOL behaves much like the
-VIX, but in a market that is structurally less efficient. Implied
-volatility is informative in both Bitcoin and the S\&P~500, yet only
-the S\&P~500 in calm periods comes close to the textbook benchmark of
-an unbiased predictor. In stress, both predictive relationships
-deteriorate, and the variance risk premium moves in opposite directions
-across the two markets --- widening in equities, compressing in crypto.
-For anyone using volatility indices as forecast inputs, the practical
-lesson is to treat them as risk-adjusted expectations and to expect
-their reliability to degrade exactly when risk management would value
-it most.
+The main message of this thesis is that DVOL behaves like the VIX, but
+in a market that is less efficient. Implied volatility is informative
+in both Bitcoin and the S\&P 500. However, only the S\&P 500 in normal
+periods is close to being an unbiased predictor. In stress periods,
+the predictive relationship weakens in both markets. The variance risk
+premium also moves in opposite directions: it widens in equities and
+compresses in crypto. For practitioners, this means that volatility
+indices should be used as risk-adjusted expectations, not as raw
+forecasts. Their reliability is also lower in stress, which is exactly
+when accurate forecasts matter most.
 
 \appendix
 \chapter{Data Pipeline and Main Scripts}\label{appendix}\label{data-pipeline-and-main-scripts}
