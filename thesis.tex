@@ -97,6 +97,9 @@
 \usepackage[round,authoryear]{natbib}
 \bibliographystyle{apalike}
 \usepackage[nottoc,notlot,notlof,numbib]{tocbibind}
+\usepackage{bibentry}
+% \fcitet{key} -> "Author (Year)" + a footnote with the full reference
+\newcommand{\fcitet}[1]{\citet{#1}\footnote{\bibentry{#1}.}}
 
 % ===== Hyperlinks (load last) =====
 \usepackage[colorlinks=true,linkcolor=black,citecolor=NavyBlue,urlcolor=NavyBlue,bookmarksnumbered=true,bookmarksopen=true]{hyperref}
@@ -114,6 +117,8 @@
 \providecommand{\tightlist}{\setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
 
 \begin{document}
+
+\nobibliography*    % required by bibentry to inline references in footnotes
 
 % =====================================================
 % TITLE PAGE
@@ -606,7 +611,7 @@ measures. The central idea is simple. If option prices aggregate the
 expectations of informed market participants, then implied volatility
 should contain forward-looking information. It should therefore be
 useful for predicting future realized volatility. This prediction has
-received substantial empirical support. \citet{christensen1998} show that implied
+received substantial empirical support. \fcitet{christensen1998} show that implied
 volatility from index options contains important information about
 future realized volatility and can outperform past realized volatility
 in forecasting exercises. Their study is one of the key references in
@@ -648,7 +653,7 @@ future uncertainty.
 
 Broader survey evidence confirms that implied volatility is one of the
 main approaches used in volatility forecasting, alongside historical
-volatility models and econometric models such as ARCH and GARCH. \citet{poon2003} review a large body of
+volatility models and econometric models such as ARCH and GARCH. \fcitet{poon2003} review a large body of
 volatility forecasting research and show that implied volatility is
 frequently competitive with, and often superior to, purely historical
 measures. Their review also highlights that volatility forecasting
@@ -683,7 +688,7 @@ efficient forecast of future realized volatility. This means that it
 should contain forward-looking information, and that its forecast errors
 should not be systematic.
 
-The empirical evidence is more nuanced. Early work by \citet{canina1993} questions the idea that implied
+The empirical evidence is more nuanced. Early work by \fcitet{canina1993} questions the idea that implied
 volatility is always superior to historical volatility. Using S\&P 100
 index options, they find that implied volatility can be a poor forecast
 of subsequent realized volatility. This result challenges the simple
@@ -692,7 +697,7 @@ It also shows that the informational content of implied volatility
 depends on the market, the sample period, and the methodology used.
 
 Later evidence provides a more positive view of implied volatility.
-\citet{christensen1998} study the
+\fcitet{christensen1998} study the
 relation between implied and realized volatility and find that implied
 volatility contains significant information about future volatility. In
 some specifications, it even subsumes the information contained in past
@@ -720,7 +725,7 @@ reflect the willingness of investors to pay for protection against
 adverse market movements.
 
 This interpretation is consistent with the broader literature on
-variance risk premium. \citet{bollerslev2009} show that the difference between implied and realized
+variance risk premium. \fcitet{bollerslev2009} show that the difference between implied and realized
 variation contains important information and is linked to expected stock
 returns. Their work highlights that the variance risk premium is not
 only a measurement error between implied and realized volatility. It is
@@ -728,7 +733,7 @@ a priced risk factor that reflects compensation for exposure to
 uncertainty.
 
 Survey evidence also confirms that implied volatility is a major tool in
-volatility forecasting. \citet{poon2003}
+volatility forecasting. \fcitet{poon2003}
 review a large number of studies on volatility forecasting and show that
 implied volatility is often competitive with historical and econometric
 models. However, they also emphasize that forecasting performance is not
@@ -746,7 +751,7 @@ statistical sense, and its predictive relationship can vary over time.
 hypotheses H1 and H2: we expect significant predictive content (slope
 $\beta$ different from zero) \emph{and} significant bias (slope
 $\beta\neq 1$, positive intercept) in both markets. The dependence on
-asset class and methodology highlighted by \citet{poon2003} also
+asset class and methodology highlighted by \fcitet{poon2003} also
 justifies running the same predictive regression separately on Bitcoin
 and the S\&P~500 rather than pooling them.
 
@@ -773,11 +778,11 @@ variance risk premium can be interpreted as the price of uncertainty in
 financial markets.
 
 A large body of empirical literature documents that the variance risk
-premium is positive on average in equity markets. \citet{bollerslev2009} show that the difference
+premium is positive on average in equity markets. \fcitet{bollerslev2009} show that the difference
 between implied and realized variance is time-varying and contains
 significant information about future stock returns. Their results
 suggest that the variance risk premium is a priced risk factor, rather
-than a simple forecasting error. Similarly, \citet{carr2009} provide
+than a simple forecasting error. Similarly, \fcitet{carr2009} provide
 evidence that the variance risk premium reflects compensation for
 variance risk and is linked to macroeconomic uncertainty.
 
@@ -821,7 +826,7 @@ High-volatility periods tend to be followed by further high-volatility
 periods. This feature becomes particularly pronounced during crises,
 when uncertainty rises sharply and market conditions deteriorate.
 
-\citet{engle1982} and \citet{bollerslev1986} provide early evidence of time-varying volatility
+\fcitet{engle1982} and \fcitet{bollerslev1986} provide early evidence of time-varying volatility
 and volatility clustering through ARCH and GARCH models. These models
 show that shocks to volatility are persistent, especially during
 turbulent periods. In practice, this implies that once markets enter a
@@ -831,7 +836,7 @@ to the dynamics observed during crises.
 
 Financial crises are typically associated with sudden increases in both
 realized and implied volatility. In equity markets, the VIX is widely
-used as a measure of market stress. \citet{whaley2009} shows that the VIX reflects
+used as a measure of market stress. \fcitet{whaley2009} shows that the VIX reflects
 investor fear and is often referred to as a ``fear index.'' During
 crisis episodes, such as the 2008 financial crisis or the COVID-19
 shock, the VIX increases sharply, reflecting both higher expected
@@ -841,7 +846,7 @@ volatility also rises, although not always in a proportional way.
 The relationship between implied and realized volatility tends to change
 during these periods. Previous literature shows that the predictive
 power of implied volatility can deteriorate in times of stress. For
-example, \citet{giot2005} finds that implied volatility
+example, \fcitet{giot2005} finds that implied volatility
 tends to overreact during extreme market conditions, leading to larger
 deviations from subsequent realized volatility. This behavior is often
 attributed to increased risk aversion and stronger demand for insurance,
@@ -857,7 +862,7 @@ than realized volatility. This leads to an expansion of the variance
 risk premium and reflects the increased price of risk in the market.
 
 More broadly, the literature emphasizes that volatility dynamics are
-regime-dependent. \citet{hamilton1989} introduces the concept of regime-switching models,
+regime-dependent. \fcitet{hamilton1989} introduces the concept of regime-switching models,
 where financial variables can move between different states, such as
 low-volatility and high-volatility regimes. This framework has been
 widely used to model financial markets, especially in the context of
@@ -901,7 +906,7 @@ for both academics and practitioners.
 
 One of the most consistent findings in the literature is that
 cryptocurrencies exhibit much higher volatility than traditional asset
-classes. \citet{dyhrberg2016} studies Bitcoin through a GARCH framework
+classes. \fcitet{dyhrberg2016} studies Bitcoin through a GARCH framework
 and compares it with gold and the US dollar. The paper shows that
 Bitcoin shares some characteristics with both assets, but also displays
 a distinct volatility profile. This early evidence supports the idea
@@ -910,7 +915,7 @@ commodity. Its risk dynamics are more unstable and require specific
 empirical analysis.
 
 Further studies confirm that cryptocurrency volatility is persistent and
-subject to strong regime changes. \citet{baur2018} revisit the comparison between
+subject to strong regime changes. \fcitet{baur2018} revisit the comparison between
 Bitcoin, gold, and the US dollar, and emphasize that Bitcoin behaves
 differently from traditional safe-haven assets. Their results suggest
 that Bitcoin is primarily driven by speculative demand rather than by
@@ -1366,7 +1371,7 @@ observations of the regressand share $h-1$ underlying returns. This
 mechanically generates a moving-average structure of order $h-1$ in the
 residuals and renders ordinary OLS standard errors inconsistent. To
 account for this overlap and for residual heteroskedasticity, we report
-\citet{newey1987}-type HAC standard errors throughout, with a Bartlett
+\fcitet{newey1987}-type HAC standard errors throughout, with a Bartlett
 kernel and a lag truncation equal to the horizon ($q = h = 30$ for the
 benchmark specification). All $t$-statistics and confidence intervals
 reported in Chapter~\ref{empirical-results} use these HAC standard
@@ -1404,7 +1409,7 @@ throughout the analysis.
 \textbf{Equity stress.} For the S\&P 500, a day $t$ is classified as a
 stress day when the VIX closes above its full-sample 90th percentile:
 \begin{equation}
-\mathbb{1}^{\text{stress}}_{SPX,t} = \mathbb{1}\!\left\{ VIX_t > Q_{0.90}(VIX) \right\},
+\mathbf{1}^{\text{stress}}_{SPX,t} = \mathbf{1}\!\left\{ VIX_t > Q_{0.90}(VIX) \right\},
 \label{eq:stress_spx}
 \end{equation}
 where $Q_{0.90}(\cdot)$ denotes the empirical 90th percentile computed
@@ -1418,14 +1423,14 @@ starts only in March 2021). We therefore proxy crypto stress with
 realized volatility, classifying day $t$ as a stress day when 30-day
 realized volatility exceeds its 90th percentile:
 \begin{equation}
-\mathbb{1}^{\text{stress}}_{BTC,t} = \mathbb{1}\!\left\{ RV^{(30)}_{BTC,t} > Q_{0.90}(RV^{(30)}_{BTC}) \right\}.
+\mathbf{1}^{\text{stress}}_{BTC,t} = \mathbf{1}\!\left\{ RV^{(30)}_{BTC,t} > Q_{0.90}(RV^{(30)}_{BTC}) \right\}.
 \label{eq:stress_btc}
 \end{equation}
 
 \textbf{Global stress.} A combined indicator flags a day on which either
 market is in stress, using a logical OR:
 \begin{equation}
-\mathbb{1}^{\text{stress}}_{\text{global},t} = \mathbb{1}^{\text{stress}}_{SPX,t} \vee \mathbb{1}^{\text{stress}}_{BTC,t}.
+\mathbf{1}^{\text{stress}}_{\text{global},t} = \mathbf{1}^{\text{stress}}_{SPX,t} \vee \mathbf{1}^{\text{stress}}_{BTC,t}.
 \label{eq:stress_global}
 \end{equation}
 
@@ -2102,7 +2107,7 @@ The empirical results are broadly consistent with the findings
 documented in the literature on equity markets. A large body of research
 shows that implied volatility contains significant information about
 future realized volatility but is not an unbiased predictor. Studies
-such as \citet{christensen1998} find that implied volatility has strong predictive power,
+such as \fcitet{christensen1998} find that implied volatility has strong predictive power,
 while other works document a systematic bias, with implied volatility
 exceeding realized volatility on average. The results of this study
 confirm these two key facts. In both markets, implied volatility is
@@ -2111,7 +2116,7 @@ one, indicating the presence of bias and supporting the existence of a
 variance risk premium.
 
 The evidence on the variance risk premium is also in line with previous
-research. \citet{bollerslev2009} show that the variance risk premium is positive on average
+research. \fcitet{bollerslev2009} show that the variance risk premium is positive on average
 and varies over time. The results obtained here confirm that the premium
 is positive in both cryptocurrency and equity markets. They also extend
 the literature by showing that the premium is larger in cryptocurrency
