@@ -99,7 +99,15 @@
 \usepackage[nottoc,notlot,notlof,numbib]{tocbibind}
 \usepackage{bibentry}
 % \fcitet{key} -> "Author (Year)" + a footnote with the full reference
-\newcommand{\fcitet}[1]{\citet{#1}\footnote{\bibentry{#1}.}}
+% \fcitet{key}: inline citation + footnote with full reference.
+% The visible citation AND the footnote superscript both link to the
+% bibliography entry (not to the footnote text at the bottom of the page).
+\newcommand{\fcitet}[1]{%
+  \citet{#1}%
+  \refstepcounter{footnote}%
+  \hyperlink{cite.#1}{\textsuperscript{\thefootnote}}%
+  \footnotetext{\bibentry{#1}.}%
+}
 
 % ===== Hyperlinks (load last) =====
 \usepackage[colorlinks=true,linkcolor=black,citecolor=NavyBlue,urlcolor=NavyBlue,bookmarksnumbered=true,bookmarksopen=true]{hyperref}
