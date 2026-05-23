@@ -1,9 +1,9 @@
-# Implied vs Realized Volatility — Bitcoin & S&P 500
+# Implied vs Realized Volatility: Bitcoin & S&P 500
 
 Full thesis + replication code for
 
 > **Does implied volatility efficiently predict future realized volatility, and how does this relationship vary across market regimes and between cryptocurrency and equity markets?**
-> Gabin Torres & Clément Massabo — MSc Financial Markets and Investments, SKEMA Business School, 2025
+> Gabin Torres & Clément Massabo, MSc Financial Markets and Investments, SKEMA Business School, 2025
 
 [![Python 3.12](https://img.shields.io/badge/python-3.12+-blue.svg)](https://www.python.org/downloads/)
 [![uv](https://img.shields.io/badge/managed%20with-uv-blueviolet)](https://docs.astral.sh/uv/)
@@ -59,12 +59,12 @@ All five tables and figures reported in the thesis are produced by a single comm
 |---|---:|---:|---:|---:|:---:|
 | Global BTC | 0.545 | 0.085 | 0.33 | 1,171 | rejected (p < 0.001) |
 | Global SPX | 0.792 | 0.097 | 0.36 | 1,171 | rejected (p = 0.032) |
-| SPX — Normal | **0.973** | 0.204 | 0.27 | 955 | **not rejected (p = 0.89)** |
-| SPX — Stress | 0.324 | 0.098 | 0.05 | 120 | rejected (p < 0.001) |
-| BTC — Normal | 0.537 | 0.117 | 0.29 | 955 | rejected (p < 0.001) |
-| BTC — Stress | 0.442 | 0.302 | 0.19 | 117 | not rejected (p = 0.07) |
+| SPX, normal regime | **0.973** | 0.204 | 0.27 | 955 | **not rejected (p = 0.89)** |
+| SPX, stress regime | 0.324 | 0.098 | 0.05 | 120 | rejected (p < 0.001) |
+| BTC, normal regime | 0.537 | 0.117 | 0.29 | 955 | rejected (p < 0.001) |
+| BTC, stress regime | 0.442 | 0.302 | 0.19 | 117 | not rejected (p = 0.07) |
 
-> In normal periods the VIX is statistically indistinguishable from a fully efficient forecast of S&P 500 realized volatility — and that property disappears in stress. DVOL behaves like a noisier, structurally less efficient sibling of the VIX.
+> In normal periods the VIX is statistically indistinguishable from a fully efficient forecast of S&P 500 realized volatility, and that property disappears in stress. DVOL behaves like a noisier, structurally less efficient sibling of the VIX.
 
 ## Data sources
 
